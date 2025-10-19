@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+</head>
+
+<body style="font-family: 'Times New Roman', Times, serif;
+             background: linear-gradient(to right, rgb(5, 36, 116), rgb(37, 38, 45)); 
+             display: flex; 
+             justify-content: center; 
+             align-items: center; 
+             min-height: 100vh;">
+
+  <div style="background-color: #ccc; 
+              padding: 20px; 
+              border-radius:20px; 
+              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+              width: 300px; height: 50vh;">
+
+<h2 style="text-align: center; color: #333;">Login</h2>
+    
+   <form id="loginform">
+      <div style="margin-bottom: 15px;">
+        <label for="username" 
+              style="display: block; margin-bottom: 5px; 
+                    color: #000000;">Username or Email</label>
+        
+        <input type="text" 
+               id="loginUser" 
+               name="username" 
+               placeholder="Type your username or email" 
+               style="width: 100%; 
+                      padding: 10px; 
+                      border: none; 
+                      border-bottom: 1px solid #ccc; 
+                      border-radius: 20px; 
+                      box-sizing: border-box;" required>
+      </div>
+    
+      <div style="margin-bottom: 15px;">
+        <label for="loginPass" 
+               style="display: block; 
+                      margin-bottom: 5px; 
+                      color: #000000;">Password</label>
+       
+       <input type="password" 
+               id="loginPass" 
+               name="password" 
+               placeholder="Type your password" 
+               style="width: 100%; 
+                      padding: 10px; 
+                      border: none; 
+                      border-bottom: 1px solid #ccc; 
+                      border-radius: 20px; 
+                      box-sizing: border-box;" required>
+      </div>
+    
+      <div style="display: flex; 
+                  justify-content: space-between;
+                  align-items: center; 
+                  margin-bottom: 15px;">
+       
+        <label style="display: inline-flex; align-items: center;">
+        <input type="checkbox" name="remember" style="margin-right: 5px;">Remember me</label>
+       
+        <a href="#" style="color: #0505dc; text-decoration: none;">Forgot Password?</a>
+      </div>
+    
+    <button type="submit" style="width: 35vh; 
+                                 padding: 10px;
+                                 border: none;
+                                 border-radius: 20px; 
+                                 background: linear-gradient(to right, #4f75c9, #2d2d37);
+                                 color: white; 
+                                 font-weight: bold; 
+                                 cursor: pointer; display: block; 
+                                 margin-left: auto; 
+                                 margin-right: auto;">Login</button>
+    
+    <div style="text-align: center; margin-top: 15px;">
+          New here?<a href="Lab3SignUpFormCalvo.html" style="color: #0505dc; text-decoration: none;">Sign Up</a>
+      </div>
+      </form>
+    </div>
+
+    <script>
+      document.getElementById("loginform").addEventListener("submit", function(e) {
+        e.preventDefault();
+        let user = document.getElementById("loginUser").value.trim();
+        let pass = document.getElementById("loginPass").value.trim();
+
+        let savedUser = localStorage.getItem("username");
+        let savedPass = localStorage.getItem("password");
+        let savedEmail = localStorage.getItem("email");
+
+        if (!savedUser || !savedPass || !savedEmail){
+          alert("You don’t have an account yet. Please sign up first.");
+        return;
+        }
+
+
+        if ((user === savedUser || user === savedEmail) && pass === savedPass) {
+          localStorage.setItem("loggedIn", "true");
+          alert("Login succesful!");
+          window.location.href = "sampleHOME.html";
+
+        } else {
+          alert("Incorrect username/email or password.");
+        }
+          
+        });
+
+    </script>
+
+<!--
+    <script>
+        document.getElementById("loginBtn").addEventListener("click", function() {
+            let storedUsername = localStorage.getItem("username");
+            let storedPassword = localStorage.getItem("password");
+
+            let enteredUsername = document.getElementById("username").value.trim();
+            let enteredPassword = document.getElementById("password").value.trim();
+
+            if (enteredUsername === "" || enteredPassword === "") {
+                alert("Please fill in all fields!");
+            } else if (enteredUsername === storedUsername && enteredPassword === storedPassword) {
+                alert("Login successful! Welcome, " + storedUsername + "!");
+                window.location.href = "home.html";
+            } else {
+                alert("Invalid username or password!");
+            }
+        });
+    </script>
+</body>
+</html>-->
+
+</body>
+</html>
